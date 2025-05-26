@@ -16,7 +16,7 @@ class TestUserAddToBasketFromProductPage:
         page = LoginPage(browser, link)
         page.open()
         email = str(time.time()) + "@fakemail.org"
-        password = "verysecurepassword123!"
+        password = "password!123"
         page.register_new_user(email, password)
         page.should_be_authorized_user()
 
@@ -25,7 +25,7 @@ class TestUserAddToBasketFromProductPage:
         page = ProductPage(browser, link)
         page.open()
         assert page.is_not_element_present(
-            *ProductPageLocators.SUCCESS_MESSAGE_PRODUCT), "Success message is displayed on product page, but should not be"
+            *ProductPageLocators.SUCCESS_MESSAGE_PRODUCT), "Сообщение об успешном завершении отображается на странице продукта, но не должно быть"
 
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
@@ -72,7 +72,7 @@ def test_guest_can_add_product_to_basket(browser, link):
 #     page = ProductPage(browser, link)
 #     page.open()
 #     page.add_product_to_basket()
-#     assert page.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE_PRODUCT), "Success message is displayed, but should not be"
+#     assert page.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE_PRODUCT), "Отображается сообщение об успешном завершении, но его не должно быть"
 #
 # @pytest.mark.xfail
 # def test_message_disappeared_after_adding_product_to_basket(browser):
